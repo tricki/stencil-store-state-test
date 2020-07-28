@@ -1,6 +1,7 @@
 import { Component, h, State, Watch } from '@stencil/core';
 
-import { appState } from '../../store/store';
+import { appState, appStore } from '../../store/store';
+import { attachComponent } from '../../store/attachComponent';
 
 @Component({
   tag: 'app-home',
@@ -19,6 +20,8 @@ export class AppHome {
   }
 
   connectedCallback() {
+    attachComponent(appStore, this, 'foo');
+
     this.intervalId = setInterval(() => {
       appState.foo = 'Test ' + Math.round(Math.random() * 1000);
       console.log('Interval: changed foo', appState.foo)
