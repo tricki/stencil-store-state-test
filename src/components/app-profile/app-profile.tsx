@@ -1,6 +1,8 @@
 import { Component, Prop, h } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
 
+import { appState } from '../../store/store';
+
 @Component({
   tag: 'app-profile',
   styleUrl: 'app-profile.css',
@@ -24,6 +26,8 @@ export class AppProfile {
             Hello! My name is {this.normalize(this.match.params.name)}. My name was passed in
             through a route param!
           </p>
+
+          <button onClick={() => appState.foo = 'new foo'}>Set Store State</button>
         </div>
       );
     }

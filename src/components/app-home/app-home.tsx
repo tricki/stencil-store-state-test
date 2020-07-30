@@ -1,7 +1,7 @@
 import { Component, h, State, Watch } from '@stencil/core';
 
 import { appState, appStore } from '../../store/store';
-import { attachComponent } from '../../store/attachComponent';
+import { attachComponent, detachComponent } from '../../store/attachComponent';
 
 @Component({
   tag: 'app-home',
@@ -30,6 +30,7 @@ export class AppHome {
 
   disconnectedCallback() {
     clearInterval(this.intervalId);
+    detachComponent(this);
   }
 
   render() {
